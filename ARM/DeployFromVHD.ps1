@@ -54,13 +54,16 @@ $OsTypes = @(
 $OsType = ($OsTypes | Out-GridView -Title "Select OS type..." -PassThru).OSType
   
 # Select Avaiability Set
-$AvailabilitySets = @([PSCustomObject]@{"Name" = "Create New"; "Location" = "n/a"; "ResourceGroupName" = "n/a"; "Id" = "n/a"; })
+$AvailabilitySets = @([PSCustomObject]@{"Name" = "null"; "Location" = "n/a"; "ResourceGroupName" = "n/a"; "Id" = "n/a"; })
+$AvailabilitySets += @([PSCustomObject]@{"Name" = "Create New"; "Location" = "n/a"; "ResourceGroupName" = "n/a"; "Id" = "n/a"; })
 $AvailabilitySets += (Get-AzureRmResourceGroup | Get-AzureRmAvailabilitySet | Select-Object -Property Name,  Location, ResourceGroupName, Id)
 $AvailabilitySet = ($AvailabilitySets | Out-GridView -Title "Select Availability Set..." -PassThru).Name
 if($AvailabilitySet -eq "Create New"){
     $AvailabilitySet = Read-Host -Prompt "Please input Availability Set name"
     Write-Verbose "Creating new Availability Set `"$AvailabilitySet`""
     $AvailabilitySet = New-AzureRmAvailabilitySet -ResourceGroupName $ResourceGroup.ResourceGroupName -Name $AvailabilitySet -Location $Location
+}else{
+    $AvailabilitySet = Get-AzureRmAvailabilitySet -ResourceGroupName $ResourceGroup.ResourceGroupName -Name $AvailabilitySet 
 }
   
 # Select VM Size
@@ -185,7 +188,7 @@ if($DataDiskCount -ge 1){
         $VmConfig = Add-AzureRmVMDataDisk -VM $VmConfig -VhdUri $DataDisks[$i].VhdUri -Name "DataDisk$($i+1)" -CreateOption Attach -Lun $i -DiskSizeInGB $DataDisks[$i].DiskSizeInGB
     }
 }
-if($AvailabilitySet.Id -ne $null){
+if(($AvailabilitySet.Id -ne $null) -and ($AvailabilitySet.Id -ne "n/a")){
     $VmConfig.AvailabilitySetReference = $AvailabilitySet.Id
 }
 New-AzureRmVM -ResourceGroupName $ResourceGroup.ResourceGroupName -Location $Location -VM $VmConfig -Verbose
