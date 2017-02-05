@@ -62,6 +62,8 @@ if($AvailabilitySet -eq "Create New"){
     $AvailabilitySet = Read-Host -Prompt "Please input Availability Set name"
     Write-Verbose "Creating new Availability Set `"$AvailabilitySet`""
     $AvailabilitySet = New-AzureRmAvailabilitySet -ResourceGroupName $ResourceGroup.ResourceGroupName -Name $AvailabilitySet -Location $Location
+}elseif($AvailabilitySet -eq "null"){
+    $AvailabilitySet = $null
 }else{
     $AvailabilitySet = Get-AzureRmAvailabilitySet -ResourceGroupName $ResourceGroup.ResourceGroupName -Name $AvailabilitySet 
 }
