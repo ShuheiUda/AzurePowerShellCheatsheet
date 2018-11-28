@@ -1,0 +1,1 @@
+Login-AzureRmAccount #Add-AzureRmAccount ‚Å‚à“¯‚¶

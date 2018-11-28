@@ -1,0 +1,1 @@
+﻿Get-AzureRmSubscription Select-AzureRmSubscription –SubscriptionId "<サブスクリプション ID>"

@@ -1,0 +1,1 @@
+﻿Get-AzureRmVMSize -Location "East Asia" | Select-Object Name | Select-Object Name
