@@ -1,0 +1,2 @@
+﻿Get-AzureVM -ServiceName "<クラウド サービス名>" -Name "<仮想マシン名>" | Add-AzureDataDisk -CreateNew -DiskSizeInGB "<ディスク サイズ>" -DiskLabel "<ディスク名>" -LUN "<LUN 番号>" -HostCaching None | Update-AzureVM
+Get-AzureVM -ServiceName "<クラウド サービス名>" -Name "<仮想マシン名>" | Remove-AzureDataDisk -LUN "<LUN 番号>" | Update-AzureVM

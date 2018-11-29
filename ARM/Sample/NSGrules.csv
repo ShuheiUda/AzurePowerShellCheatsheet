@@ -1,0 +1,5 @@
+﻿Name,Description,Protocol,SourcePortRange,DestinationPortRange,SourceAddressPrefix,DestinationAddressPrefix,Access,Priority,Direction
+rule1,rule1,TCP,*,80,*,*,Allow,100,Inbound
+rule2,rule2,TCP,*,8080,*,*,Deny,110,Inbound
+rule3,rule3,TCP,*,3389,*,*,Allow,120,Inbound
+rule4,rule4,UDP,*,3389,*,*,Allow,130,Inbound

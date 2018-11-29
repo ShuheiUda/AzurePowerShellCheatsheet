@@ -1,0 +1,5 @@
+﻿Name,AddressPrefix,NextHopType,NextHopIpAddress
+route1,23.102.135.246/32,Internet,
+route2,10.0.0.0/8,VirtualNetworkGateway,
+route3,172.16.0.0/12,VnetLocal,
+route4,192.168.0.0/16,VirtualAppliance,172.16.0.4
