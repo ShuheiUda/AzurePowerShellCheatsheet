@@ -1,0 +1,1 @@
+﻿(Get-AzureLocation | Where-Object {$_.DisplayName -eq "East Asia"}). VirtualMachineRoleSizes

@@ -1,0 +1,1 @@
+﻿New-AzureService -ServiceName "<クラウド サービス名>" -Location "East Asia"
