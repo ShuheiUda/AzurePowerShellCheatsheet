@@ -1,9 +1,9 @@
 ﻿<#
 .SYNOPSIS
-NSG のルールを CSV から追加するサンプル
+UDR のルートを CSV から追加するサンプル
 
 .DESCRIPTION
-Name      : Add-AzureRmNetworkSecurityRuleConfigFromCSV
+Name      : Add-AzureRmRouteConfigFromCSV
 GitHub    : https://github.com/ShuheiUda/AzurePowerShellCheatsheet
 Author    : Syuhei Uda
 LastCheck : 2018/11/29 (Azure PowerShell 6.13.1)
